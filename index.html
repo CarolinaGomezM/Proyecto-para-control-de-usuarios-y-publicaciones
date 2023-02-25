@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <li> <a href="#">Mostrar usuarios </a></li>
+             <li> <a href="#">Agregar usuarios </a></li>
+             <li> <a href="#">Buscar usuarios </a></li>
+             <li> <a href="#">Obtener Posts </a></li>
+
+
+        </nav>
+
+
+    </header>
+    <h1>USUARIOS</h1>
+        <form action="">
+            <form action="">
+                <label for="">Name</label>
+                <input type="text" id="name" placeholder="name"> <br><br>
+    
+                <label for="">Username</label>
+                <input type="text" id="username" placeholder="username"> <br><br>
+    
+                <label for="">Email</label>
+                <input type="text" id="email" placeholder="email"> <br><br>
+    
+                Adress: <br><br>
+    
+                <label for="">Street</label> 
+                <input type="text" id="street"> <br><br>
+    
+                <label for="">Suite</label> 
+                <input type="text" id="suite"> <br><br>
+    
+                <label for="">City</label> 
+                <input type="text" id="city"><br><br>
+    
+                <label for="">Zipcode</label> 
+                <input type="text" id="zipcode"> <br><br>
+    
+                Geo: <br><br>
+    
+                <label for="">lat</label> 
+                <input type="text" id="lat"><br><br>
+    
+                <label for="">Ing</label>
+                <input type="text" id="ing"> <br><br>
+    
+                <label for="">Phone</label>
+                <input type="text" id="phone"> <br><br>
+    
+                <label for="">Website</label>
+                <input type="text" id="website"> <br><br>
+    
+                Company: <br><br>
+    
+                <label for="">Name</label>
+                <input type="text" id="namec"> <br><br>
+    
+                <label for="">CathPrase</label>
+                <input type="text" id="cathprase"> <br><br>
+    
+                <label for="">bs</label>
+                <input type="text" id="bs"> <br><br>
+    
+    
+                <input type="button" id="buttonadd" value="Agregar"> <br><br>
+
+            <label for="">Buscar</label>
+            <input type="text" name="" id="buscaruser">
+            <input type="button" id="buttonsearch" value="Buscar">
+
+
+
+
+        </form>
+
+        <table id="usuariostable">
+            <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Street</th>
+            <th>suite</th>
+            <th>city</th>
+            <th>zipcode</th>
+            <th>lat</th>
+            <th>lng</th>
+            <th>phone</th>
+            <th>website</th>
+            <th>name company</th>
+            <th>catchPhrase</th>
+            <th>bs</th>
+    
+        </tr>
+        </table>
+        <br><br><br><br><br><br><br>
+
+        <h2>PUBLICACIONES</h2>
+
+        <label for="">Buscar publicaciones de usuario</label> <br>
+        <input type="text" name="" id="buscarpubli">
+        <input type="button" value="Buscar publicaciones" id="buttonpubli"> <br><br>
+
+        <label for="">Buscar publicacion</label> 
+        <input type="text" name="" id="buscarpublicacion">
+        <input type="button" value="Buscar publicaciones" id="buttonpu"> <br><br>
+
+        <select name="selectposts" id="selectposts">
+        </select>
+
+        <table id="tablep"></table>
+
+        
+        <script src="usuarios.js"></script>
+        <script src="datos.js"></script>
+        <script src="publicaciones.js"></script>
+        <script src="appg.js"></script>
+
+
+    
+</body>
+
+</html>
