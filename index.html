@@ -6,83 +6,260 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-color: #FFF8E7;
+        }
+        form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #f9e9d3;
+  border: 1px solid #d3a96b;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #d3a96b;
+  font-family: 'Libre Baskerville', serif;
+  color: #7b5b32;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: #f0d8bc;
+  color: #7b5b32;
+  font-family: 'Libre Baskerville', serif;
+}
+
+textarea {
+  height: 150px;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: #f0d8bc;
+  color: #7b5b32;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.btn-vintage {
+    display: inline-block;
+  border: 2px solid #f7d7c4;
+  border-radius: 50px;
+  padding: 10px 20px;
+  background-color: #fff6ed;
+  color: #8b6c61;
+  font-family: 'Times New Roman', serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-vintage:hover {
+    background-color: #f7d7c4;
+  color: #fff6ed;
+  border-color: #8b6c61;
+}
+
+
+#texto {
+  color: #ff0000; /* color rojo */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ffe6e6; /* color de fondo rosado */
+  border: 1px solid #ff0000; /* borde rojo de 1px */
+  padding: 10px; /* espacio interno */
+  margin: 10px 0; /* margen superior e inferior */
+  border-radius: 5px; /* bordes redondeados */
+}
+table {
+  border-collapse: collapse;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  margin: 20px auto;
+  width: 80%;
+}
+
+th {
+  background-color: #f4c3a4;
+  border: 1px solid #b18060;
+  color: #4d4d4d;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  background-color: #fff9f0;
+  border: 1px solid #b18060;
+  color: #4d4d4d;
+  padding: 10px;
+}
+
+tr:hover td {
+  background-color: #f6dfc3;
+  color: #4d4d4d;
+}
+
+.menu {
+  background-color: #f7eedc;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.menu li {
+  display: inline-block;
+}
+
+.menu a {
+  display: inline-block;
+  color: #6e433d;
+  font-size: 18px;
+  font-family: 'Playfair Display', serif;
+  text-decoration: none;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  color: #f7eedc;
+  background-color: #6e433d;
+}
+
+p.title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: #8B4513;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <li> <a href="#">Mostrar usuarios </a></li>
-             <li> <a href="#">Agregar usuarios </a></li>
-             <li> <a href="#">Buscar usuarios </a></li>
-             <li> <a href="#">Obtener Posts </a></li>
-
-
-        </nav>
+        <nav class="menu">
+        <ul>
+            <li> <a href="#" id="musuarios">Mostrar usuarios </a></li>
+             <li> <a href="#" id="ausuarios">Agregar usuarios </a></li>
+             <li> <a href="#" id="busuarios">Buscar usuarios </a></li>
+             <li> <a href="#" id="oposts">Obtener posts de un usuario</a></li>
+             <li> <a href="#" id="opost">Obtener posts</a></li>
+        </ul>
+    </nav>
 
 
     </header>
-    <h1>USUARIOS</h1>
-        <form action="">
+    <p class="title" id="tusuarios">Usuarios</p>
+
+    <section id="suser">
+        <p class="subtitle">Buscar por username</p>
+        <form action="" class="vintage">
+            <label for="">Buscar</label>
+                <input type="text" name="" id="buscaruser" required>
+                <button type="submit" id="buttonsearch" value="Buscar" class="btn-vintage">Buscar Usuario</button> 
+    
+        </form>
+    </section>
+
+
+
+    <section id="fadd">
+        <p class="subtitle">Agregar un usuario</p>
+        <form action="" class="vintage">
             <form action="">
                 <label for="">Name</label>
-                <input type="text" id="name" placeholder="name"> <br><br>
+                <input type="text" id="name" placeholder="name" required> <br><br>
     
                 <label for="">Username</label>
-                <input type="text" id="username" placeholder="username"> <br><br>
+                <input type="text" id="username" placeholder="username" required> <br><br>
     
                 <label for="">Email</label>
-                <input type="text" id="email" placeholder="email"> <br><br>
+                <input type="text" id="email" placeholder="email" required> <br><br>
     
                 Adress: <br><br>
     
                 <label for="">Street</label> 
-                <input type="text" id="street"> <br><br>
+                <input type="text" id="street" required> <br><br>
     
                 <label for="">Suite</label> 
-                <input type="text" id="suite"> <br><br>
+                <input type="text" id="suite" required> <br><br>
     
                 <label for="">City</label> 
-                <input type="text" id="city"><br><br>
+                <input type="text" id="city" required><br><br>
     
                 <label for="">Zipcode</label> 
-                <input type="text" id="zipcode"> <br><br>
+                <input type="text" id="zipcode" required> <br><br>
     
                 Geo: <br><br>
     
                 <label for="">lat</label> 
-                <input type="text" id="lat"><br><br>
+                <input type="text" id="lat" required><br><br>
     
                 <label for="">Ing</label>
-                <input type="text" id="ing"> <br><br>
+                <input type="text" id="ing" required> <br><br>
     
                 <label for="">Phone</label>
-                <input type="text" id="phone"> <br><br>
+                <input type="text" id="phone" required> <br><br>
     
                 <label for="">Website</label>
-                <input type="text" id="website"> <br><br>
+                <input type="text" id="website" required> <br><br>
     
                 Company: <br><br>
     
                 <label for="">Name</label>
-                <input type="text" id="namec"> <br><br>
+                <input type="text" id="namec" required> <br><br>
     
                 <label for="">CathPrase</label>
-                <input type="text" id="cathprase"> <br><br>
+                <input type="text" id="cathprase" required> <br><br>
     
                 <label for="">bs</label>
-                <input type="text" id="bs"> <br><br>
+                <input type="text" id="bs" required> <br><br>
     
     
-                <input type="button" id="buttonadd" value="Agregar"> <br><br>
+                <button type="submit" id="buttonadd" value="Agregar" class="btn-vintage">Agregar Usuario</button> <br><br>
 
-            <label for="">Buscar</label>
-            <input type="text" name="" id="buscaruser">
-            <input type="button" id="buttonsearch" value="Buscar">
-
-
-
-
+        
         </form>
 
+    </section>
+
+        <section id="shuser">
         <table id="usuariostable">
             <tr>
             <th>Name</th>
@@ -103,21 +280,44 @@
         </tr>
         </table>
         <br><br><br><br><br><br><br>
+    </section>
 
-        <h2>PUBLICACIONES</h2>
+        
 
-        <label for="">Buscar publicaciones de usuario</label> <br>
-        <input type="text" name="" id="buscarpubli">
-        <input type="button" value="Buscar publicaciones" id="buttonpubli"> <br><br>
+    <p class="title" id="tpubli">Publicaciones</p>
+        <section id="sposts">
+            <p class="subtitle">Buscar publicaciones por usuario</p>
+            <form action="" class="vintage">
 
-        <label for="">Buscar publicacion</label> 
-        <input type="text" name="" id="buscarpublicacion">
-        <input type="button" value="Buscar publicaciones" id="buttonpu"> <br><br>
-
+        <label for="">Buscar</label> <br>
         <select name="selectposts" id="selectposts">
         </select>
+        <button type="submit" id="buttonpubli" value="Buscar publicaciones" class="btn-vintage">Buscar publicaciones</button> 
+        <p id="textopu"></p>
 
-        <table id="tablep"></table>
+       
+         </form>
+
+         <table id="tablep"></table>
+         </section>
+
+
+        <section id="spost">
+            <p class="subtitle">Buscar publicaciones por id de publicacion</p>
+        <form action="">
+        <label for="">Buscar publicacion</label> 
+        <input type="text" name="" id="buscarpublicacion" required>
+        <button type="submit" id="buttonpu" value="Buscar publicacion" class="btn-vintage">Buscar publicacion</button> 
+        <p id="texto"></p>
+
+       
+    </form>
+    <table id="tableonlypu"></table>
+</section>
+
+         
+
+
 
         
         <script src="usuarios.js"></script>

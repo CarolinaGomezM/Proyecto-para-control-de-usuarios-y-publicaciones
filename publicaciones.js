@@ -22,5 +22,6 @@ class Publicaciones{
                 return this.publicaciones[i];
             }
         }
+        return null;
     }
 }
