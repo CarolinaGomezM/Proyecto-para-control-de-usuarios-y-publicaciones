@@ -1,7 +1,6 @@
            class Usuarios{
                 constructor(){
                     this.datos = usuarios;
-                    console.log(usuarios);
 
                 }
 
@@ -16,10 +15,9 @@
                         if(this.datos[i].username == username){
                             return this.datos[i];
                         }
-                        else{
-                            return null;
-                        }
+                        
                     }
+                    return null;
                 }
 
                 listar(){
@@ -41,29 +39,7 @@
 
             }
 
-          /*  let usuariosa = [usuarios];
-            //const variable = new usuariosClass();
-            //variable.agregarnuevousuario();
-
-            console.log(usuariosa);
-        
-
-            var mostrar;
-
-            console.log(usuarios.length);
-
-            console.log(Object.values(usuarios));
-
-            for(let i=0; i<usuarios.length; i++){
-             //    mostrar += "nombre " + usuarios[i].name+ " ";
-               console.log(usuarios[i].name);  
-            }
-
-           // document.write(mostrar);
-           console.log(usuarios[usuarios.length-1].id);
-           console.log(usuarios[usuarios.length-1].id+1);
-
-           */
+    
 
           
 

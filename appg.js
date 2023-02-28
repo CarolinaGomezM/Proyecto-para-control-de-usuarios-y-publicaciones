@@ -12,6 +12,11 @@ var suser = document.getElementById("suser");
 var tusuarios = document.getElementById("tusuarios");
 var tpubli = document.getElementById("tpubli");
 
+var tadd = document.getElementById("tadd");
+var elementoP = document.getElementById("texto");
+var elementoF = document.getElementById("textosearch");
+var elementoA = document.getElementById("textoadd");
+
 shuser.style.display = "none";
 fadd.style.display = "none";
 secspost.style.display = "none";
@@ -19,6 +24,7 @@ secsposts.style.display = "none";
 suser.style.display = "none";
 tusuarios.style.display = "none";
 tpubli.style.display = "none";
+
 
 musuarios.addEventListener("click", () => {
   shuser.style.display = "block";
@@ -38,6 +44,7 @@ opost.addEventListener("click", () => {
   suser.style.display = "none";
   tusuarios.style.display = "none";
   tpubli.style.display = "block";
+  elementoP.style.display = "none";
 });
 
 oposts.addEventListener("click", () => {
@@ -49,9 +56,11 @@ oposts.addEventListener("click", () => {
   tusuarios.style.display = "none";
   tpubli.style.display = "block";
 
+
+var Usuario = new Usuarios();
   var select = document.getElementById("selectposts");
 
-  console.log("holaa");
+
 
   for (let i = 0; i < Usuario.datos.length; i++) {
     let option = document.createElement("option");
@@ -60,16 +69,20 @@ oposts.addEventListener("click", () => {
     select.add(option);
   }
 
-  console.log(select);
+
 
   select.addEventListener("change", () => {
+
     var publicacion = new Publicaciones();
     let buttonpubli = document.getElementById("buttonpubli");
 
+    
+
     buttonpubli.addEventListener("click", () => {
-      if (select.value == null) {
+      if (select.value == undefined) {
         select.value = 1;
       }
+  
 
       let usuariob = select.value;
       ob = publicacion.pubusuario(usuariob);
@@ -86,34 +99,37 @@ oposts.addEventListener("click", () => {
 
       // Encabezado de la tabla
       const encabezadoFila = tabla.insertRow();
-      const encabezadoIdCelda = encabezadoFila.insertCell();
-      encabezadoIdCelda.innerText = "UserId";
       const encabezadoNombreCelda = encabezadoFila.insertCell();
       encabezadoNombreCelda.innerText = "Title";
       const encabezadoPrecioCelda = encabezadoFila.insertCell();
       encabezadoPrecioCelda.innerText = "Body";
 
-      console.log(ob);
+
 
       ob.forEach((ob) => {
         const fila = tabla.insertRow();
-        const idCelda = fila.insertCell();
-        idCelda.innerText = ob.userId;
         const nombreCelda = fila.insertCell();
         nombreCelda.innerText = ob.title;
         const precioCelda = fila.insertCell();
         precioCelda.innerText = ob.body;
       });
 
-      document.secsposts.appendChild(tabla);
+       
+      if(secsposts !== undefined && secspost !== null){
+        secsposts.appendChild(tabla);
+      }
+      
     });
   });
   var id = $("#selectposts").val();
 
-  console.log(id);
 });
 
+
+
+
 ausuarios.addEventListener("click", () => {
+  
   shuser.style.display = "none";
   fadd.style.display = "block";
   secspost.style.display = "none";
@@ -121,6 +137,9 @@ ausuarios.addEventListener("click", () => {
   suser.style.display = "none";
   tusuarios.style.display = "block";
   tpubli.style.display = "none";
+  elementoA.style.display = "none";
+  
+  
 
   document.getElementById("name").disabled = false;
   document.getElementById("username").disabled = false;
@@ -155,16 +174,19 @@ ausuarios.addEventListener("click", () => {
 });
 
 busuarios.addEventListener("click", () => {
-  shuser.style.display = "none";
+ shuser.style.display = "none";
   fadd.style.display = "none";
   secspost.style.display = "none";
   secsposts.style.display = "none";
   suser.style.display = "block";
   tusuarios.style.display = "block";
-  tpubli.style.display = "none";
+  tpubli.style.display = "none"; 
+  elementoF.style.display = "none";
 });
 
 // FUNCIONES DE FORMULARIO
+
+
 var Usuario = new Usuarios();
 $("#usuariostable").append(Usuario.listar());
 
@@ -186,6 +208,42 @@ button.addEventListener("click", () => {
   let cathprase = document.getElementById("cathprase").value;
   let bs = document.getElementById("bs").value;
 
+
+  const form = document.getElementById('miform');
+  const inputs = form.querySelectorAll('input');
+
+  let vacios = false;
+  let vaciosreq = false;
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value.trim() === '') {
+      vacios = true;
+      break;
+    }
+    if (inputs[i].validity.typeMismatch) {
+      vaciosreq = true;
+      break;
+    } else {
+      vaciosreq = false;
+       
+    }
+  }
+
+  if(vacios || vaciosreq){
+     if(vacios){
+      elementoA.innerHTML =
+      "Ha dejado campos vacíos.";
+    elementoA.style.display = "block";
+     }
+    else if(vaciosreq){
+      elementoA.innerHTML =
+      "No ha escrito correctamente los datos.";
+    elementoA.style.display = "block";
+     }
+  }else{
+
+    elementoA.style.display = "none";
+
   let length = usuarios[usuarios.length - 1].id + 1;
   var datos = {
     id: length,
@@ -206,7 +264,7 @@ button.addEventListener("click", () => {
     website: website,
     company: {
       name: namec,
-      cathPrase: cathprase,
+      catchPhrase: cathprase,
       bs: bs,
     },
   };
@@ -217,17 +275,31 @@ button.addEventListener("click", () => {
     "<tr><th>Name</th><th>Username</th><th>Email</th><th>Street</th><th>Suit</th><th>City</th><th>Zipcode</th><th>Lat</th><th>Lng</th><th>Phone</th><th>Website</th><th>Company Name</th><th>Catch Phrase</th><th>Bs</th></tr>"
   );
   $("#usuariostable").append(Usuario.listar());
-  console.log(usuarios);
-});
+}});
 
 let buttonsearch = document.getElementById("buttonsearch");
+var elementoF = document.getElementById("textosearch");
+
+
+elementoP.style.display = "none";
 
 buttonsearch.addEventListener("click", () => {
-  fadd.style.display = "block";
+  elementoF.style.display = "none";
 
   let usernamesearch = document.getElementById("buscaruser").value;
 
   let res = Usuario.buscar(usernamesearch);
+
+
+
+  if(res == null){
+    elementoF.innerHTML =
+    "Ha seleccionado un usuario no existente, intente con otro porfavor.";
+  elementoF.style.display = "block";
+
+  }else{
+    elementoF.style.display = "none";
+    fadd.style.display = "block"; 
 
   document.getElementById("name").value = res.name;
   document.getElementById("username").value = res.username;
@@ -259,13 +331,14 @@ buttonsearch.addEventListener("click", () => {
   document.getElementById("cathprase").disabled = true;
   document.getElementById("bs").disabled = true;
   document.getElementById("buttonadd").disabled = true;
-});
+}});
 
 var publicacion = new Publicaciones();
 
 var elementoP = document.getElementById("texto");
 
 elementoP.style.display = "none";
+
 
 let buttonpu = document.getElementById("buttonpu");
 
@@ -291,24 +364,22 @@ buttonpu.addEventListener("click", () => {
 
     // Encabezado de la tabla
     const encabezadoFila = tabla.insertRow();
-    const encabezadoIdCelda = encabezadoFila.insertCell();
-    encabezadoIdCelda.innerText = "UserId";
     const encabezadoNombreCelda = encabezadoFila.insertCell();
     encabezadoNombreCelda.innerText = "Title";
     const encabezadoPrecioCelda = encabezadoFila.insertCell();
     encabezadoPrecioCelda.innerText = "Body";
 
-    console.log(ob);
 
     const fila = tabla.insertRow();
-    const idCelda = fila.insertCell();
-    idCelda.innerText = ob.userId;
     const nombreCelda = fila.insertCell();
     nombreCelda.innerText = ob.title;
     const precioCelda = fila.insertCell();
     precioCelda.innerText = ob.body;
 
-    document.secspost.appendChild(tabla);
+    if(secspost !== undefined && secspost !== null){
+      secspost.appendChild(tabla);
+    }
+    
   }
 });
 

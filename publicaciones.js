@@ -6,7 +6,6 @@ class Publicaciones{
 
     pubusuario(id){
         var publi = []; 
-        console.log(id);
         for(let i = 0; i<this.publicaciones.length;i++){
             if(this.publicaciones[i].userId == id){
                 publi.push(this.publicaciones[i]);
